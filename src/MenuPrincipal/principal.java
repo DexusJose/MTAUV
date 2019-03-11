@@ -31,7 +31,7 @@ public class principal {
     
     
     // ****************** Mensajes ***************
-    private static final String version = "V 0.1.4";
+    private static final String version = "Versión: 0.1.4";
     
     private static final String dev = "-XIX0x03";
     
