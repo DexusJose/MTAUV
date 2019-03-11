@@ -5,6 +5,7 @@
  */
 package MenuPrincipal;
 
+import BarraMenu.barMenu;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -47,6 +48,10 @@ public class principal {
     public static final Font ArialP14 = new Font("Arial",Font.PLAIN,14);
     public static final Font ArialB14 = new Font("Arial",Font.BOLD,14);
     
+    //***************** Colores ******************
+    public static final Color BarraM1 = new Color(70,132,153);
+    public static final Color BarraM2 = new Color(154,188,199);
+    
 
     private JFrame principal;
     
@@ -75,6 +80,10 @@ public class principal {
         panelPrincipal = new panelFondo();
         principal = new JFrame();
         principal.setTitle(title + "  -  " + version);
+        
+        barMenu barra = new barMenu();
+        barra.barra();
+        
         principal.setIconImage(mainIcon.getImage());
         principal.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         principal.addWindowListener(new WindowAdapter(){
@@ -85,6 +94,8 @@ public class principal {
         principal.setPreferredSize(pantalla);
         principal.setExtendedState(Frame.MAXIMIZED_BOTH);
         principal.getContentPane().add(panelPrincipal);
+        
+        principal.setJMenuBar(barra);
         principal.pack();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
