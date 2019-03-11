@@ -74,7 +74,7 @@ public class principal {
         
         panelPrincipal = new panelFondo();
         principal = new JFrame();
-        principal.setTitle(title + "  -  " + version+dev);
+        principal.setTitle(title + "  -  " + version);
         principal.setIconImage(mainIcon.getImage());
         principal.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         principal.addWindowListener(new WindowAdapter(){
@@ -96,7 +96,7 @@ public class principal {
     private void MensajeInicial() {
         JLabel textoInicio = new JLabel();
         textoInicio.setIcon(mainIcon);
-        textoInicio.setText(version);
+        textoInicio.setText(version+dev);
         textoInicio.setFont(ArialB14);
         textoInicio.setHorizontalAlignment(SwingConstants.CENTER);
         
