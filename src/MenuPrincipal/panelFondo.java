@@ -18,10 +18,10 @@ public class panelFondo extends JPanel{
     
     public final ImageIcon FondoImage = new ImageIcon(MTAUV.class.getResource("/res/IMG_3BUS.png"));
     
-    public panelFondo(){
-        
-        
-    }
+//    public panelFondo(){
+//        
+//        
+//    }
     
     public void paint(Graphics g){
         int width = getSize().width;

@@ -26,13 +26,13 @@ import mtauv.*;
  *
  * @author Ing. Dexus José Pérez <jose_perezmiranda@outlook.com>
  */
-public class principal {
+public  class principal {
     
     private final ImageIcon mainIcon = new ImageIcon(MTAUV.class.getResource("/res/icon.png"));
     
     
     // ****************** Mensajes ***************
-    private static final String version = "Versión: 0.1.4";
+    private static final String version = "Versión: 0.2.1";
     
     private static final String dev = "-XIX0x03";
     
@@ -58,7 +58,7 @@ public class principal {
     private panelFondo panelPrincipal;  
     private Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     
-    private void cerrarPrograma(){
+    public  void cerrarPrograma(){
         if(JOptionPane.showConfirmDialog(principal,"¿Desea salir de la aplicacion?","¿Salir?",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             System.exit(0);
         }
@@ -68,7 +68,8 @@ public class principal {
         
         
         //Mensaje de bienvenida
-        MensajeInicial();              
+        
+        //MensajeInicial();              
         
         //inicio de la aplicacion principal
         ConfiguracionVentana();
