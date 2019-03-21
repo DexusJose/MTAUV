@@ -35,7 +35,7 @@ import mtauv.MTAUV;
  */
 public class Proveedores{
     
-    public final ImageIcon iconCP = new ImageIcon(MTAUV.class.getResource("/res/Proveedor/iconoProveedor.png"));
+    public final ImageIcon iconCP = new ImageIcon(MTAUV.class.getResource("/res/Proveedor/Proveedor.png"));
     private JFrame CProveddores;
     
     public void Proveedores(){
