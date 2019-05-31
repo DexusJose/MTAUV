@@ -17,8 +17,18 @@ import javax.swing.JMenuItem;
  */
 public class barMenu extends JMenuBar{
 
+    // ******* Declaración de items *******
+    
     private JMenuItem It_Salir,prueba;
     private JMenu M_Archivo;
+    private JMenuItem It_hojaCosto;
+    
+    // ******* Nombres de los items ******
+    
+    private String MnArchivo = "Archivo";
+    private String itmSalir = "Salir";
+    private String itmHojaregistro = "Registro costo $";
+    
     
     public void barra(){
         
@@ -26,17 +36,26 @@ public class barMenu extends JMenuBar{
         
         M_Archivo = new JMenu();
         It_Salir = new JMenuItem();
+        It_hojaCosto = new JMenuItem();
         prueba = new JMenuItem();
         
-        M_Archivo.setText("Archivo");
+        M_Archivo.setText(MnArchivo);
         M_Archivo.setFont(principal.ArialB14);
         
-        It_Salir.setText("Salir");
+        It_Salir.setText(itmSalir);
         It_Salir.setFont(principal.ArialB12);
         It_Salir.addActionListener((e) -> {
             
             new principal().cerrarPrograma();
             
+        });
+        
+        It_hojaCosto.setText(itmHojaregistro);
+        It_hojaCosto.setFont(principal.ArialB12);
+        It_hojaCosto.addActionListener((e)->{
+        
+            System.out.println("Actividad iniciada");
+        
         });
         
         prueba.setText("prueba");
@@ -46,6 +65,7 @@ public class barMenu extends JMenuBar{
             CP.Proveedores();
         });
         
+        M_Archivo.add(It_hojaCosto);
         M_Archivo.add(It_Salir);
         M_Archivo.add(prueba);
         
