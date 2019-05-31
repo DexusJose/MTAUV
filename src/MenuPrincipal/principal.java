@@ -32,9 +32,9 @@ public  class principal {
     
     
     // ****************** Mensajes ***************
-    private static final String version = "Versión: 0.2.1";
+    private static final String version = "Versión: 0.2.1.2";
     
-    private static final String dev = "-XIX0x03";
+    private static final String dev = "-XIX0x30";
     
     private final String title = "MTAUV";
     
