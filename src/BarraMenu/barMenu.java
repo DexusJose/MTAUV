@@ -32,7 +32,7 @@ public class barMenu extends JMenuBar{
         M_Archivo.setFont(principal.ArialB14);
         
         It_Salir.setText("Salir");
-        It_Salir.setFont(principal.ArialP12);
+        It_Salir.setFont(principal.ArialB12);
         It_Salir.addActionListener((e) -> {
             
             new principal().cerrarPrograma();
