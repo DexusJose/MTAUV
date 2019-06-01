@@ -10,6 +10,7 @@ import MenuPrincipal.principal;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import manager.hojacosto.RegistroCosto;
 
 /**
  *
@@ -55,7 +56,8 @@ public class barMenu extends JMenuBar{
         It_hojaCosto.addActionListener((e)->{
         
             System.out.println("Actividad iniciada");
-        
+            new RegistroCosto().Registroindividual();
+            
         });
         
         prueba.setText("prueba");
