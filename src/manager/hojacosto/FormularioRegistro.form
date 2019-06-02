@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="cc" red="99" type="rgb"/>
+    </Property>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[800, 600]"/>
+    </Property>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[800, 600]"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="CampoNombre" alignment="2" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="EtNombre" alignment="2" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="30" pref="30" max="30" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="BtGuardar" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="CampoPaterno" alignment="2" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="jLabel3" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="CampoMaterno" alignment="2" min="-2" pref="100" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="85" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="CampoNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CampoPaterno" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CampoMaterno" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="BtGuardar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="81" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JTextField" name="CampoNombre">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoNombreActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="CampoPaterno">
+    </Component>
+    <Component class="javax.swing.JTextField" name="CampoMaterno">
+    </Component>
+    <Component class="javax.swing.JButton" name="BtGuardar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Guardar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtGuardarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="EtNombre">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="principal.ArialB12" type="code"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Color.BLACK&#xd;&#xa;" type="code"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Nombre(s)"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Por defecto"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="EtNombre.setFont(principal.ArialB12);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Apellido Paterno"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Apellido Materno"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
