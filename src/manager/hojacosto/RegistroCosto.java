@@ -35,16 +35,24 @@ public class RegistroCosto {
     
     private final String Titulo = "Registro individual";
     private JFrame ventanaRegistro;
+    private FormularioRegistro panelregistro;
+    
+    
     
     public void Registroindividual(){
             configuracion();
     }
     
     public void configuracion(){
+        
+        panelregistro = new FormularioRegistro();
+        
         ventanaRegistro = new JFrame();
         ventanaRegistro.setTitle(Titulo);
         ventanaRegistro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ventanaRegistro.setPreferredSize(new Dimension(800,600));
+        //panelregistro.setSize(ventanaRegistro.getSize());
+        ventanaRegistro.getContentPane().add(panelregistro);
         ventanaRegistro.pack();
         ventanaRegistro.setLocationRelativeTo(null);
         ventanaRegistro.setVisible(true);
