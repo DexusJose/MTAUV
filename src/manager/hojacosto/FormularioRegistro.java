@@ -32,12 +32,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author Ing. Dexus José Pérez <jose_perezmiranda@outlook.com>
  */
 public class FormularioRegistro extends javax.swing.JPanel {
+
+    private FileNameExtensionFilter Filtroarchivo;
 
     /**
      * Creates new form FormularioRegistro
@@ -138,6 +141,9 @@ public class FormularioRegistro extends javax.swing.JPanel {
         // TODO add your handling code here:
         String ruta;
         JFileChooser guardar = new JFileChooser();
+        Filtroarchivo = new FileNameExtensionFilter("Archivo PDF *.pdf",".pdf");
+        guardar.setFileFilter(Filtroarchivo);
+        
         int option = guardar.showSaveDialog(this);
         if(option == JFileChooser.APPROVE_OPTION){
              File f = guardar.getSelectedFile();
@@ -145,6 +151,7 @@ public class FormularioRegistro extends javax.swing.JPanel {
              
              try {
                 FileOutputStream documento = new FileOutputStream(ruta+".pdf");
+                 System.out.println(guardar.getFileFilter().toString());
                 Document doc = new Document();
                 PdfWriter.getInstance(doc, documento);
                 doc.open();

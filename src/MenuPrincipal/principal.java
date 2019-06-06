@@ -35,6 +35,7 @@ public  class principal {
     private static final String dev = "-XIX0x30";
     
     private final String title = "MTAUV";
+    private final String OS = System.getProperty("os.name");
     
     // ****************** Fuentes ***************
     public static final Font ArialP9 = new Font("Arial",Font.PLAIN,9);
@@ -78,7 +79,7 @@ public  class principal {
         
         panelPrincipal = new panelFondo();
         principal = new JFrame();
-        principal.setTitle(title + "  -  " + version);
+        principal.setTitle(title + "  -  " + version + "   |   " +OS);
         
         barMenu barra = new barMenu();
         barra.barra();
