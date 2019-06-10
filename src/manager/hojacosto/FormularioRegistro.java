@@ -141,9 +141,13 @@ public class FormularioRegistro extends javax.swing.JPanel {
         // TODO add your handling code here:
         String ruta;
         JFileChooser guardar = new JFileChooser();
+        String rutaDirec = System.getProperty("user.home");
+        File directorio =new File(rutaDirec+"/documents");
         Filtroarchivo = new FileNameExtensionFilter("Archivo PDF *.pdf",".pdf");
+        guardar.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         guardar.setFileFilter(Filtroarchivo);
-        
+        guardar.addChoosableFileFilter(Filtroarchivo);
+        guardar.setCurrentDirectory(directorio);
         int option = guardar.showSaveDialog(this);
         if(option == JFileChooser.APPROVE_OPTION){
              File f = guardar.getSelectedFile();
@@ -151,11 +155,11 @@ public class FormularioRegistro extends javax.swing.JPanel {
              
              try {
                 FileOutputStream documento = new FileOutputStream(ruta+".pdf");
-                 System.out.println(guardar.getFileFilter().toString());
+                System.out.println(guardar.getFileFilter().toString());
                 Document doc = new Document();
                 PdfWriter.getInstance(doc, documento);
                 doc.open();
-                doc.add(new Paragraph(CampoNombre.getText()));
+                doc.add(new Paragraph(CampoNombre.getText()+" "+CampoPaterno.getText()));
                 doc.close();
                 JOptionPane.showMessageDialog(this,"PDF creado!");
                 

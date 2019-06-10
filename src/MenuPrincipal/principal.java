@@ -30,9 +30,9 @@ public  class principal {
     
     
     // ****************** Mensajes ***************
-    private static final String version = "Versión: 0.2.1.2";
+    private static final String version = "Versión: 0.2.2.1";
     
-    private static final String dev = "-XIX0x30";
+    private static final String dev = "-XIX0x06";
     
     private final String title = "MTAUV";
     private final String OS = System.getProperty("os.name");
@@ -50,6 +50,7 @@ public  class principal {
     //***************** Colores ******************
     public static final Color BarraM1 = new Color(70,132,153);
     public static final Color BarraM2 = new Color(154,188,199);
+    public static final Color Fond_blue = new Color(153,204,255);
     
 
     private JFrame principal;

@@ -11,6 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import manager.hojacosto.RegistroCosto;
+import manager.nuevaMDB.Nuevamdb;
 
 /**
  *
@@ -22,13 +23,14 @@ public class barMenu extends JMenuBar{
     
     private JMenuItem It_Salir,prueba;
     private JMenu M_Archivo;
-    private JMenuItem It_hojaCosto;
+    private JMenuItem It_hojaCosto,It_NMDB;
     
     // ******* Nombres de los items ******
     
     private String MnArchivo = "Archivo";
     private String itmSalir = "Salir";
     private String itmHojaregistro = "Registro costo $";
+    private String itmNMDB = "Nuevo MDB";
     
     
     public void barra(){
@@ -38,6 +40,7 @@ public class barMenu extends JMenuBar{
         M_Archivo = new JMenu();
         It_Salir = new JMenuItem();
         It_hojaCosto = new JMenuItem();
+        It_NMDB= new JMenuItem();
         prueba = new JMenuItem();
         
         M_Archivo.setText(MnArchivo);
@@ -57,7 +60,14 @@ public class barMenu extends JMenuBar{
         
             System.out.println("Actividad iniciada");
             new RegistroCosto().Registroindividual();
+            System.out.println(System.getProperty("user.home"));
             
+        });
+        
+        It_NMDB.setText(itmNMDB);
+        It_NMDB.setFont(principal.ArialB12);
+        It_NMDB.addActionListener((e)->{
+            new Nuevamdb().NuevaMDB();
         });
         
         prueba.setText("prueba");
@@ -68,6 +78,7 @@ public class barMenu extends JMenuBar{
         });
         
         M_Archivo.add(It_hojaCosto);
+        M_Archivo.add(It_NMDB);
         M_Archivo.add(It_Salir);
         M_Archivo.add(prueba);
         
