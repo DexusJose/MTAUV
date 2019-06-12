@@ -23,11 +23,16 @@
  */
 package manager.nuevaMDB;
 
+import Conection.conectiondb;
 import java.awt.Window;
 import java.io.File;
 import java.io.FileWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -40,6 +45,11 @@ public class PanelNMDB extends javax.swing.JPanel {
 
     //public String exten;
     private FileNameExtensionFilter FiltroArchivo;
+    public static Connection conexion;
+    public static Statement comando;
+    public static ResultSet resultado;
+    
+    conectiondb conector = new conectiondb();
 
     /**
      * Creates new form PanelMDB
@@ -117,6 +127,27 @@ public class PanelNMDB extends javax.swing.JPanel {
                     FileWriter NMDB = new FileWriter(directorio+"/"+CT_NombreMDB.getText()+exten);
                     JOptionPane.showMessageDialog(this,"MDB creado!\n"+directorio+"\\"+CT_NombreMDB.getText()+exten);
                     NMDB.close();
+                    try {
+                            //Class.forName("net.ucanacces.jdbc.UcanaccessDriver");
+                            conexion = DriverManager.getConnection("jdbc:ucanaccess://"+directorio+"\\"+CT_NombreMDB.getText()+exten+";newdatabaseversion=V2010");
+                            JOptionPane.showMessageDialog(this, "Conexión establecida ","Correcto" , JOptionPane.INFORMATION_MESSAGE);
+                            comando = conexion.createStatement();
+                            JOptionPane.showMessageDialog(this, "Sentencia ok", "ok!", JOptionPane.INFORMATION_MESSAGE);
+                            comando.execute("CREATE TABLE ejemplo (id COUNTER PRIMARY KEY, descr text(400), number numeric(12,3), date datetime) ");
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, "Error: \n"+e, "Error al cargar el driver", JOptionPane.ERROR_MESSAGE);
+                        }
+                    
+                    try {
+                            comando.close();
+                            JOptionPane.showMessageDialog(this, "Datos cerrado!");
+                        } catch (SQLException e) {
+            
+                            JOptionPane.showMessageDialog(this, "Error al cerrar la base de datos: \n"+e);
+                            
+                        }
+                    
+                    
                     Window win = SwingUtilities.getWindowAncestor(this);
                     win.dispose();
                 } catch (Exception e) {
