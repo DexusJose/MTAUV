@@ -114,9 +114,9 @@ public class PanelNMDB extends javax.swing.JPanel {
             if(!doc.exists()){
                           
                 try {
-                    FileWriter documento = new FileWriter(directorio+"/"+CT_NombreMDB.getText()+exten);
-                    JOptionPane.showMessageDialog(this,"MDB creado!\n"+directorio+"/"+CT_NombreMDB.getText()+exten);
-                    //System.err.println(getClass().toString());
+                    FileWriter NMDB = new FileWriter(directorio+"/"+CT_NombreMDB.getText()+exten);
+                    JOptionPane.showMessageDialog(this,"MDB creado!\n"+directorio+"\\"+CT_NombreMDB.getText()+exten);
+                    NMDB.close();
                     Window win = SwingUtilities.getWindowAncestor(this);
                     win.dispose();
                 } catch (Exception e) {
