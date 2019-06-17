@@ -26,7 +26,6 @@ package manager.nuevaMDB;
 import Conection.conectiondb;
 import java.awt.Window;
 import java.io.File;
-import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -50,11 +49,19 @@ public class PanelNMDB extends javax.swing.JPanel {
     public static ResultSet resultado;
     
     conectiondb conector = new conectiondb();
+    
+    public static String ruta;
+    public static String exten = ".mdb";
+    public static JFileChooser guardar = new JFileChooser();
+    public static String direccion = System.getProperty("user.home");
+    public static File directorio = new File(direccion+"/documents");
+    public static File doc;
 
     /**
      * Creates new form PanelMDB
      */
     public PanelNMDB() {
+        
         initComponents();
     }
 
@@ -77,7 +84,7 @@ public class PanelNMDB extends javax.swing.JPanel {
 
         ET_NBD.setText("Nueva Base de Datos:");
 
-        Bt_CrearMDB.setLabel("Crear");
+        Bt_CrearMDB.setText("Crear");
         Bt_CrearMDB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Bt_CrearMDBActionPerformed(evt);
@@ -113,20 +120,16 @@ public class PanelNMDB extends javax.swing.JPanel {
     private void Bt_CrearMDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_CrearMDBActionPerformed
         // TODO add your handling code here:
         if(CT_NombreMDB.getText().length()!= 0){
+            doc = new File(directorio+"/"+CT_NombreMDB.getText()+exten);
             
-            String ruta;
-            String exten = ".mdb";
-            JFileChooser guardar = new JFileChooser();
-            String direccion = System.getProperty("user.home");
-            File directorio = new File(direccion+"/documents");
-            File doc = new File(directorio+"/"+CT_NombreMDB.getText()+exten);
         
             if(!doc.exists()){
-                          
+                                     
                 try {
-                    FileWriter NMDB = new FileWriter(directorio+"/"+CT_NombreMDB.getText()+exten);
+                    //File NMDB = new File(directorio+"/"+CT_NombreMDB.getText()+exten);
                     JOptionPane.showMessageDialog(this,"MDB creado!\n"+directorio+"\\"+CT_NombreMDB.getText()+exten);
-                    NMDB.close();
+                    //NMDB.close();
+                    
                     try {
                             //Class.forName("net.ucanacces.jdbc.UcanaccessDriver");
                             conexion = DriverManager.getConnection("jdbc:ucanaccess://"+directorio+"\\"+CT_NombreMDB.getText()+exten+";newdatabaseversion=V2010");
@@ -134,7 +137,7 @@ public class PanelNMDB extends javax.swing.JPanel {
                             comando = conexion.createStatement();
                             JOptionPane.showMessageDialog(this, "Sentencia ok", "ok!", JOptionPane.INFORMATION_MESSAGE);
                             comando.execute("CREATE TABLE ejemplo (id COUNTER PRIMARY KEY, descr text(400), number numeric(12,3), date datetime) ");
-                        } catch (Exception e) {
+                        } catch (SQLException e) {
                             JOptionPane.showMessageDialog(null, "Error: \n"+e, "Error al cargar el driver", JOptionPane.ERROR_MESSAGE);
                         }
                     
@@ -147,7 +150,6 @@ public class PanelNMDB extends javax.swing.JPanel {
                             
                         }
                     
-                    
                     Window win = SwingUtilities.getWindowAncestor(this);
                     win.dispose();
                 } catch (Exception e) {
@@ -156,6 +158,7 @@ public class PanelNMDB extends javax.swing.JPanel {
             }else{
                 JOptionPane.showMessageDialog(this, "El archivo ya existe!");
             }
+            
             
         }else{
             JOptionPane.showMessageDialog(this, "Ingrese un nombre para el archivo");
