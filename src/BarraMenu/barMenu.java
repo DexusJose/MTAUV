@@ -10,8 +10,10 @@ import MenuPrincipal.principal;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import manager.hojacosto.RegistroCosto;
 import manager.nuevaMDB.Nuevamdb;
+import manager.nuevaMDB.PanelNMDB;
 
 /**
  *
@@ -73,8 +75,10 @@ public class barMenu extends JMenuBar{
         prueba.setText("prueba");
         prueba.addActionListener((e) -> {
             
-            Proveedores CP = new Proveedores();
-            CP.Proveedores();
+            //Proveedores CP = new Proveedores();
+            //CP.Proveedores();
+            //JOptionPane.showMessageDialog(this,PanelNMDB.doc.getAbsolutePath());
+            
         });
         
         M_Archivo.add(It_hojaCosto);
