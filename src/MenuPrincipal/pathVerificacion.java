@@ -24,6 +24,7 @@
 package MenuPrincipal;
 
 import java.io.File;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,7 +34,7 @@ import javax.swing.JOptionPane;
 public class pathVerificacion {
     
         //**************** Verificacion de documentos **********
-    public static String estension = ".accdb";
+    private static final String EXT_FILE = ".accdb";
     public static String pathUser = System.getProperty("user.home");
     public static String pathDoc = "/documents";
     public static String ADMTAUV = "/Administracion MTAUV";
@@ -43,14 +44,18 @@ public class pathVerificacion {
     public static File PathDatos = new File(pathUser+pathDoc+ADMTAUV+Dat);
     public static File PathConf = new File(pathUser+pathDoc+ADMTAUV+config);
     
+    //************ Propiedades *********** 
+    private final Properties defaultProperties = new Properties();
+    private final String archivoString = "/default.properties";
+    public  File defaultFile;
     
-    public static void verificacion(){
+    public  void verificacion(){
         
         initVerificacion();
         
     }
 
-    private static void initVerificacion() {
+    private  void initVerificacion() {
         
         if(PathPrincipal.exists()){
             
@@ -76,7 +81,7 @@ public class pathVerificacion {
         
     }
     
-    public static void pathsInternos(){
+    public  void pathsInternos(){
         
         
         if(PathDatos.exists())
@@ -98,6 +103,23 @@ public class pathVerificacion {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            
+            defaultFile = new File(pathUser+pathDoc+ADMTAUV+config+archivoString);
+            
+            if(defaultFile.exists()){
+                System.out.println("Existe:"+defaultFile);
+            } else {
+                try {
+                    
+                    defaultFile.createNewFile();
+                    
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
+            }
+            
         }
         
     }
