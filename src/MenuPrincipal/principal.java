@@ -13,6 +13,7 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -52,7 +53,16 @@ public  class principal {
     public static final Color BarraM2 = new Color(154,188,199);
     public static final Color Fond_blue = new Color(153,204,255);
     
-
+    //**************** Verificacion de documentos **********
+    public static String estension = ".accdb";
+    public static String pathUser = System.getProperty("user.home");
+    public static String pathDoc = "/documents";
+    public static String ADMTAUV = "/Administracion MTAUV";
+    public static String Dat = "/BaseDatos";
+    public static String config = "/Configuraciones";
+    public static File PathPrincipal = new File(pathUser+pathDoc+ADMTAUV);
+    public static File PathDatos = new File(pathUser+pathDoc+ADMTAUV+Dat);
+    public static File PathConf = new File(pathUser+pathDoc+ADMTAUV+config);
     private JFrame principal;
     
     private panelFondo panelPrincipal;  
@@ -73,7 +83,7 @@ public  class principal {
         
         //inicio de la aplicacion principal
         ConfiguracionVentana();
-        
+        verificacionArchivos();
     }
     
     public void ConfiguracionVentana(){
@@ -105,6 +115,58 @@ public  class principal {
             
     }
 
+    public void verificacionArchivos(){
+     
+        if(PathPrincipal.exists()){
+            
+            System.out.println("Existe:"+PathPrincipal);
+            pathsInternos();
+        }else{
+            JOptionPane.showMessageDialog(principal, PathPrincipal.exists(), "sin carpeta", JOptionPane.ERROR_MESSAGE);
+            
+            try {
+                
+                PathPrincipal.mkdir();
+                System.out.println("Principal Creado");
+                
+            } catch (Exception e) {
+                
+                e.printStackTrace();
+                
+            }
+            
+            pathsInternos();
+                       
+        }
+        
+    }
+    
+    public void pathsInternos(){
+        
+        
+        if(PathDatos.exists())
+            System.out.println("Existe:"+PathDatos);
+        else{
+            try {
+                PathDatos.mkdir();
+                System.out.println("datos creado");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (PathConf.exists()) 
+            System.out.println("Existe:"+PathConf);
+        else{
+            try {
+                PathConf.mkdir();
+                System.out.println("config creado");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        
+    }
+    
     private void MensajeInicial() {
         JLabel textoInicio = new JLabel();
         textoInicio.setIcon(mainIcon);
