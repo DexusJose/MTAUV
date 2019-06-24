@@ -31,7 +31,7 @@ public  class principal {
     
     
     // ****************** Mensajes ***************
-    private static final String version = "Versión: 0.2.2.1";
+    private static final String version = "Versión: 0.2.4";
     
     private static final String dev = "-XIX0x06";
     
@@ -63,6 +63,9 @@ public  class principal {
     public static File PathPrincipal = new File(pathUser+pathDoc+ADMTAUV);
     public static File PathDatos = new File(pathUser+pathDoc+ADMTAUV+Dat);
     public static File PathConf = new File(pathUser+pathDoc+ADMTAUV+config);
+    
+    //*************** JFrame *******************
+    
     private JFrame principal;
     
     private panelFondo panelPrincipal;  
