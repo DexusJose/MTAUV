@@ -50,7 +50,7 @@ public class PanelNMDB extends javax.swing.JPanel {
     
     conectiondb conector = new conectiondb();
     
-    public static String ruta;
+    //public static String ruta;
     public static String exten = ".mdb";
     public static JFileChooser guardar = new JFileChooser();
     public static String direccion = System.getProperty("user.home");
