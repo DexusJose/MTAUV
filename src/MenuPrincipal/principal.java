@@ -6,6 +6,7 @@
 package MenuPrincipal;
 
 import BarraMenu.barMenu;
+import MenuPrincipal.login.verificacion;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -75,12 +76,21 @@ public  class principal {
         //MensajeInicial();              
         
         //inicio de la aplicacion principal
-        ConfiguracionVentana();
+        
         pathVerificacion verificacion = new pathVerificacion();
         verificacion.verificacion();
+        
+        verificacion login = new verificacion();
+        login.acceso();
+        
+        ConfiguracionVentana();
+        
     }
     
     public void ConfiguracionVentana(){
+        
+        
+        
         
         panelPrincipal = new panelFondo();
         principal = new JFrame();

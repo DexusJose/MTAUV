@@ -5,6 +5,8 @@
  */
 package mtauv;
 
+import MenuPrincipal.login.verificacion;
+import MenuPrincipal.pathVerificacion;
 import MenuPrincipal.principal;
 
 /**
@@ -15,6 +17,9 @@ public class MTAUV {
 
     
     public static void main(String[] args){
+        
+        
+        
         
         principal win = new principal();
         win.VentanaPrincipal();

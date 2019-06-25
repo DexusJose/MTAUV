@@ -26,6 +26,7 @@ package MenuPrincipal;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
@@ -52,15 +53,23 @@ public class pathVerificacion {
     private final Properties defaultProperties = new Properties();
     private final String archivoString = "/default.properties";
     private final File Propertie = new File(pathUser+pathDoc+ADMTAUV+config+archivoString);
-    public  OutputStream defaultFile = null;
+    private  OutputStream defaultFile = null;
     
-    public  void verificacion() throws FileNotFoundException{
+    //************ Propiedades en el archivo propertie ******************
+    public final String[] DATOS_PROPERTIE = {"user","pass"};
+    public final String[] DATOS_VALOR = {"admin","1234"};
+    
+    public String propiedad = "";
+    public String valor = "";
+    
+    public  void verificacion() {
         
         initVerificacion();
+        JOptionPane.showMessageDialog(null,"Archivos verificados");
         
     }
 
-    private  void initVerificacion() throws FileNotFoundException {
+    private  void initVerificacion() {
         
         if(PathPrincipal.exists()){
             
@@ -86,7 +95,7 @@ public class pathVerificacion {
         
     }
     
-    public  void pathsInternos() throws FileNotFoundException{
+    public  void pathsInternos() {
         
         
         if(PathDatos.exists())
@@ -99,9 +108,12 @@ public class pathVerificacion {
                 e.printStackTrace();
             }
         }
-        if (PathConf.exists()) 
+        if (PathConf.exists()) {
+            
             System.out.println("Existe:"+PathConf);
-        else{
+            archivoPropertie();
+            
+        }else{
             try {
                 PathConf.mkdir();
                 System.out.println("config creado");
@@ -109,25 +121,81 @@ public class pathVerificacion {
                 e.printStackTrace();
             }
             
+            archivoPropertie();
             
+        }
+        
+    }
+    
+    private void archivoPropertie(){
+        
+        if(Propertie.exists()){
             
-            if(Propertie.exists()){
-                //System.out.println("Existe:"+defaultFile.toString());
-            } else {
-                try {
+//            try{
+//                defaultProperties.load(new FileReader(Propertie.toString()));
+//            }catch(IOException e){
+//                e.printStackTrace();
+//            }
+//            
+//            
+//            
+//            
+//            int i=0;
+//            do{
+//                
+//                propiedad = DATOS_PROPERTIE[i];
+//                valor = DATOS_VALOR[i];
+//                
+//                if(!defaultProperties.getProperty(DATOS_PROPERTIE[i]).equals(DATOS_PROPERTIE[i])){
+//                    System.out.println("No hay error en: "+defaultProperties.getProperty(propiedad));
+//                }
+//                
+//                System.out.println(defaultProperties.getProperty(propiedad, "default value"));
+//                i++;
+//                
+//                
+//            }while(i<=DATOS_PROPERTIE.length-1);
+//             try {
+//                defaultFile = new FileOutputStream(pathUser+pathDoc+ADMTAUV+config+archivoString);
+//                defaultProperties.store(defaultFile, null);
+//                defaultFile.close();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            
+//            
+//            System.out.println(DATOS_PROPERTIE.length);
+
+            
+        } else {
+            try {
+        
+                defaultFile = new FileOutputStream(pathUser+pathDoc+ADMTAUV+config+archivoString);
+                
+                int i=0;
+                do{
+                
+                    propiedad = DATOS_PROPERTIE[i];
+                    valor = DATOS_VALOR[i];
+                    defaultProperties.setProperty(propiedad, valor);
+                    System.out.println("creado:" +propiedad+"= "+valor);
                     
-                    defaultFile = new FileOutputStream(pathUser+pathDoc+ADMTAUV+config+archivoString);
-                    //defaultProperties.setProperty("user", "admin");
-                    //defaultProperties.setProperty("pass", "1234");
-                    defaultProperties.store(defaultFile, null);
-                    defaultFile.close();
-                    System.out.println("creado");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    i++;
+                
+                
+                }while(i<=DATOS_PROPERTIE.length-1);
+                
+                
+                defaultProperties.store(defaultFile, null);
+                defaultFile.close();
+                System.out.println("Creado:"+Propertie);
+                
+            } catch (IOException e) {
+                
+                e.printStackTrace();
                 
             }
-            
+                
         }
         
     }
