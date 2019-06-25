@@ -24,6 +24,10 @@
 package MenuPrincipal;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 
@@ -47,15 +51,16 @@ public class pathVerificacion {
     //************ Propiedades *********** 
     private final Properties defaultProperties = new Properties();
     private final String archivoString = "/default.properties";
-    public  File defaultFile;
+    private final File Propertie = new File(pathUser+pathDoc+ADMTAUV+config+archivoString);
+    public  OutputStream defaultFile = null;
     
-    public  void verificacion(){
+    public  void verificacion() throws FileNotFoundException{
         
         initVerificacion();
         
     }
 
-    private  void initVerificacion() {
+    private  void initVerificacion() throws FileNotFoundException {
         
         if(PathPrincipal.exists()){
             
@@ -81,7 +86,7 @@ public class pathVerificacion {
         
     }
     
-    public  void pathsInternos(){
+    public  void pathsInternos() throws FileNotFoundException{
         
         
         if(PathDatos.exists())
@@ -104,17 +109,20 @@ public class pathVerificacion {
                 e.printStackTrace();
             }
             
-            defaultFile = new File(pathUser+pathDoc+ADMTAUV+config+archivoString);
             
-            if(defaultFile.exists()){
-                System.out.println("Existe:"+defaultFile);
+            
+            if(Propertie.exists()){
+                //System.out.println("Existe:"+defaultFile.toString());
             } else {
                 try {
                     
-                    defaultFile.createNewFile();
-                    
-                    
-                } catch (Exception e) {
+                    defaultFile = new FileOutputStream(pathUser+pathDoc+ADMTAUV+config+archivoString);
+                    //defaultProperties.setProperty("user", "admin");
+                    //defaultProperties.setProperty("pass", "1234");
+                    defaultProperties.store(defaultFile, null);
+                    defaultFile.close();
+                    System.out.println("creado");
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 
