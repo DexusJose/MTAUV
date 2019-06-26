@@ -23,7 +23,14 @@
  */
 package MenuPrincipal.login;
 
+import MenuPrincipal.pathVerificacion;
+import MenuPrincipal.principal;
+import java.awt.Window;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -52,14 +59,18 @@ public class panelUser extends javax.swing.JPanel {
         bt_Acceso = new javax.swing.JButton();
         tf_Usuario = new javax.swing.JTextField();
         tf_pass = new javax.swing.JPasswordField();
+        bt_Salir = new javax.swing.JButton();
 
         setBackground(MenuPrincipal.principal.Fond_blue);
         setPreferredSize(new java.awt.Dimension(300, 200));
 
+        jLabel1.setFont(MenuPrincipal.principal.ArialB14);
         jLabel1.setText("Usuario:");
 
+        jLabel2.setFont(MenuPrincipal.principal.ArialB14);
         jLabel2.setText("Contraseña:");
 
+        bt_Acceso.setFont(MenuPrincipal.principal.ArialB14);
         bt_Acceso.setText("Ingresar");
         bt_Acceso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,30 +78,42 @@ public class panelUser extends javax.swing.JPanel {
             }
         });
 
+        tf_Usuario.setFont(MenuPrincipal.principal.ArialB14);
+        tf_Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tf_Usuario.setPreferredSize(new java.awt.Dimension(120, 30));
 
-        tf_pass.setText("jPasswordField1");
+        tf_pass.setFont(MenuPrincipal.principal.ArialB14);
+        tf_pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tf_pass.setPreferredSize(new java.awt.Dimension(120, 30));
+
+        bt_Salir.setFont(MenuPrincipal.principal.ArialB14);
+        bt_Salir.setText("Salir");
+        bt_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_SalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                        .addComponent(bt_Acceso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_Salir))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(bt_Acceso)))
-                .addGap(50, 50, 50))
+                            .addComponent(tf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +126,11 @@ public class panelUser extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(bt_Acceso)
-                .addGap(39, 39, 39))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_Acceso)
+                    .addComponent(bt_Salir))
+                .addGap(23, 23, 23))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -116,10 +141,36 @@ public class panelUser extends javax.swing.JPanel {
         String pass = new String(tf_pass.getPassword());
         String user = tf_Usuario.getText();
         
+        pathVerificacion veri = new pathVerificacion();
+        
+        try {
+            veri.defaultProperties.load(new FileReader(veri.Propertie.toString()));
+            
+            if(veri.defaultProperties.getProperty("user", "default value").equals(user) && veri.defaultProperties.getProperty("pass", "default value").equals(pass)){
+                JOptionPane.showMessageDialog(this, "acceso correcto");
+                Window win = SwingUtilities.getWindowAncestor(this);
+                
+                win.dispose();
+                
+            }else{
+                JOptionPane.showMessageDialog(this, "usuario o contraseña incorrecta");
+            }
+            
+            //veri.defaultFile.close();
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
         System.out.println(user);
         System.out.println(pass);
         
     }//GEN-LAST:event_bt_AccesoActionPerformed
+
+    private void bt_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_SalirActionPerformed
+        new principal().cerrarPrograma();
+    }//GEN-LAST:event_bt_SalirActionPerformed
 
     
     public boolean confirmado(){
@@ -128,6 +179,7 @@ public class panelUser extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Acceso;
+    private javax.swing.JButton bt_Salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField tf_Usuario;
