@@ -23,7 +23,10 @@
  */
 package MenuPrincipal.login;
 
+import MenuPrincipal.principal;
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
 /**
@@ -44,10 +47,16 @@ public class verificacion {
     private void configWindow() {
         
         inicio = new JFrame();
+        principal cerrar = new principal();
         panelUser paneluser = new panelUser();
-        
+        inicio.toFront();
         inicio.setTitle("Acceso");
         inicio.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        inicio.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                cerrar.cerrarPrograma();
+            }
+        });
         inicio.setPreferredSize(sizeInicio);
         inicio.getContentPane().add(paneluser);
         inicio.pack();
