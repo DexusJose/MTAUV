@@ -50,10 +50,10 @@ public class pathVerificacion {
     public static File PathConf = new File(pathUser+pathDoc+ADMTAUV+config);
     
     //************ Propiedades *********** 
-    private final Properties defaultProperties = new Properties();
-    private final String archivoString = "/default.properties";
-    private final File Propertie = new File(pathUser+pathDoc+ADMTAUV+config+archivoString);
-    private  OutputStream defaultFile = null;
+    public  final Properties defaultProperties = new Properties();
+    public  final String archivoString = "/default.properties";
+    public final File Propertie = new File(pathUser+pathDoc+ADMTAUV+config+archivoString);
+    public  OutputStream defaultFile = null;
     
     //************ Propiedades en el archivo propertie ******************
     public final String[] DATOS_PROPERTIE = {"user","pass"};
