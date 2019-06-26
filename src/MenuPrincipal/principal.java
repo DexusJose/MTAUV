@@ -80,10 +80,12 @@ public  class principal {
         pathVerificacion verificacion = new pathVerificacion();
         verificacion.verificacion();
         
-        verificacion login = new verificacion();
-        login.acceso();
+        
         
         ConfiguracionVentana();
+        
+        verificacion login = new verificacion();
+        login.acceso();
         
     }
     
