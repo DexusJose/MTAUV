@@ -57,7 +57,7 @@ public class pathVerificacion {
     
     //************ Propiedades en el archivo propertie ******************
     public final String[] DATOS_PROPERTIE = {"user","pass"};
-    public final String[] DATOS_VALOR = {"admin","1234"};
+    public final String[] DATOS_VALOR = {"empty","empty"};
     
     public String propiedad = "";
     public String valor = "";
