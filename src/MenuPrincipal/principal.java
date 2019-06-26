@@ -15,12 +15,15 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import mtauv.*;
+import sun.security.provider.VerificationProvider;
 
 /**
  *
@@ -77,15 +80,32 @@ public  class principal {
         
         //inicio de la aplicacion principal
         
+        
         pathVerificacion verificacion = new pathVerificacion();
         verificacion.verificacion();
-        
+        try {
+            verificacion.defaultProperties.load(new FileReader(verificacion.Propertie.toString()));
+            
+        } catch (IOException e) {
+        }
         
         
         ConfiguracionVentana();
         
-        verificacion login = new verificacion();
-        login.acceso();
+        if(((verificacion.defaultProperties.getProperty("user","default value").equals("empty"))==true )){
+            
+            System.out.println("no hay usuario");
+            System.out.println(verificacion.defaultProperties.getProperty("user","default value"));
+        
+        }else{
+            
+            System.out.println("hay usuario");
+            verificacion login = new verificacion();
+            login.acceso();
+            
+        }
+        
+        
         
     }
     
