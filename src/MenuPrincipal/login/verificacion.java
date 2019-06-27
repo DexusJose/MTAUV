@@ -35,7 +35,7 @@ import javax.swing.JFrame;
  */
 public class verificacion {
 
-    private JFrame inicio;
+    public JFrame inicio;
     private Dimension sizeInicio = new Dimension(300,200);
     
     public void acceso(){
