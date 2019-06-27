@@ -35,7 +35,7 @@ public  class principal {
     
     
     // ****************** Mensajes ***************
-    private static final String version = "Versión: 0.2.4";
+    private static final String version = "Versión: 0.2.5";
     
     private static final String dev = "-XIX0x06";
     
@@ -60,10 +60,11 @@ public  class principal {
 
     //*************** JFrame *******************
     
-    private JFrame principal;
+    public static JFrame principal;
     
     private panelFondo panelPrincipal;  
     private Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+    private String user="";
     
     public  void cerrarPrograma(){
         if(JOptionPane.showConfirmDialog(principal,"¿Desea salir de la aplicacion?","¿Salir?",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
@@ -82,6 +83,7 @@ public  class principal {
         
         
         pathVerificacion verificacion = new pathVerificacion();
+        verificacion login = new verificacion();
         verificacion.verificacion();
         try {
             verificacion.defaultProperties.load(new FileReader(verificacion.Propertie.toString()));
@@ -98,13 +100,15 @@ public  class principal {
             System.out.println(verificacion.defaultProperties.getProperty("user","default value"));
         
         }else{
-            
+            principal.setEnabled(false);
             System.out.println("hay usuario");
-            verificacion login = new verificacion();
+            
             login.acceso();
+            
             
         }
         
+
         
         
     }
@@ -116,7 +120,7 @@ public  class principal {
         
         panelPrincipal = new panelFondo();
         principal = new JFrame();
-        principal.setTitle(title + "  -  " + version + "   |   " +OS);
+        principal.setTitle(title + "  -  " + version + "   |   " +OS +"   |   ");
         
         barMenu barra = new barMenu();
         barra.barra();
