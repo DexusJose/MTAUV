@@ -42,6 +42,7 @@ public class panelUser extends javax.swing.JPanel {
      * Creates new form panelUser
      */
     public panelUser() {
+        
         initComponents();
     }
 
@@ -148,6 +149,14 @@ public class panelUser extends javax.swing.JPanel {
             
             if(veri.defaultProperties.getProperty("user", "default value").equals(user) && veri.defaultProperties.getProperty("pass", "default value").equals(pass)){
                 JOptionPane.showMessageDialog(this, "acceso correcto");
+                
+                try {
+                   principal.principal.setEnabled(true); 
+                } catch (Exception e) {
+                }
+                
+                
+                
                 Window win = SwingUtilities.getWindowAncestor(this);
                 
                 win.dispose();
