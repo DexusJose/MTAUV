@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import manager.hojacosto.RegistroCosto;
 import manager.nuevaMDB.Nuevamdb;
 import manager.nuevaMDB.PanelNMDB;
+import pruebas.testCodeGen;
 
 /**
  *
@@ -90,6 +91,10 @@ public class barMenu extends JMenuBar{
         
         prueba.setText("prueba");
         prueba.addActionListener((e) -> {
+            
+            testCodeGen cg = new testCodeGen();
+            cg.generador();
+            
             
             //Proveedores CP = new Proveedores();
             //CP.Proveedores();
