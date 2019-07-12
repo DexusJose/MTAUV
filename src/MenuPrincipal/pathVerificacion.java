@@ -41,7 +41,8 @@ public class pathVerificacion {
         //**************** Verificacion de documentos **********
     private static final String EXT_FILE = ".accdb";
     public static String pathUser = System.getProperty("user.home");
-    public static String pathDoc = "/documents";
+    
+    public static String pathDoc = "/Documentos";
     public static String ADMTAUV = "/Administracion MTAUV";
     public static String Dat = "/BaseDatos";
     public static String config = "/Configuraciones";
@@ -63,7 +64,7 @@ public class pathVerificacion {
     public String valor = "";
     
     public  void verificacion() {
-        
+        System.out.println(Propertie);
         initVerificacion();
         JOptionPane.showMessageDialog(null,"Archivos verificados");
         
