@@ -54,16 +54,16 @@ public class testCodeGen extends JFrame {
         
         
         l_texto = new JLabel();
-        l_texto.setBorder(new BevelBorder(HEIGHT, Color.lightGray, Color.yellow));
+        l_texto.setBorder(new BevelBorder(BevelBorder.RAISED, Color.darkGray, Color.darkGray));
         l_texto.setText("hello");
         l_texto.setFont(MenuPrincipal.principal.ArialB14);
         //l_texto.setPreferredSize(new Dimension(80,30));
-        //l_texto.setBounds(0,0,50,50);
+        l_texto.setBounds(0,0,50,30);
         
         bt_setTes = new JButton();
         bt_setTes.setBorder(new BevelBorder(HEIGHT, Color.lightGray, Color.yellow));
         bt_setTes.setText("Gua");
-        bt_setTes.setPreferredSize(new Dimension(100,50));
+        //bt_setTes.setPreferredSize(new Dimension(100,50));
         bt_setTes.setBounds(0,0,100,50);
         
         this.setTitle("Generador de codigo");
@@ -76,11 +76,13 @@ public class testCodeGen extends JFrame {
         });
         this.setPreferredSize(new Dimension(800,600));
         this.getContentPane().setBackground(MenuPrincipal.principal.Fond_blue);
-        this.getContentPane().add(l_texto);
-        this.add(bt_setTes);
+        this.add(l_texto);
+        this.setLayout(null);
+        //this.add(bt_setTes);
         //this.add(l_texto);
         this.pack();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setVisible(true);
         
     }
