@@ -42,7 +42,7 @@ public class pathVerificacion {
     private static final String EXT_FILE = ".accdb";
     public static String pathUser = System.getProperty("user.home");
     
-    public static String pathDoc = "/Documentos";
+    public static String pathDoc = "/Documents";
     public static String ADMTAUV = "/Administracion MTAUV";
     public static String Dat = "/BaseDatos";
     public static String config = "/Configuraciones";
