@@ -15,6 +15,8 @@ import MenuPrincipal.principal;
  */
 public class MTAUV {
 
+    public static String path;
+    public static String os = System.getProperty("os.name");
     
     public static void main(String[] args){
         
@@ -24,6 +26,13 @@ public class MTAUV {
         principal win = new principal();
         win.VentanaPrincipal();
     
+    }
+    
+    public static String path(){
+        if(System.getProperty("os.name").equals("Linux"))
+            return "/Documentos";
+        else
+            return "/Documents";
     }
     
     
