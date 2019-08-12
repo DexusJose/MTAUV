@@ -80,6 +80,7 @@ public  class principal {
         //MensajeInicial();              
         
         //inicio de la aplicacion principal
+        System.out.println(OS);
         
         
         pathVerificacion verificacion = new pathVerificacion();
